@@ -6,6 +6,7 @@ const variables = {
 
 
 let player;
+let boxSelected;
 
 $("#buttonX").on("click",function(){
   console.log("X pressed");
@@ -20,47 +21,71 @@ $("#buttonO").on("click",function(){
 })
 
 
-$("#box1").on("click",function(){
-    console.log("box1 pressed");
-    if(player=="x" && $("#box1 p").html() !="O"){
-    $("#box1 p").html("X");
-    player="o";
-    console.log("now its the turn for:",player);
-  } else if (player=="o" && $("#box1 p").html() !="X"){
-    $("#box1 p").html("O");
-    player="x";
-    console.log("now its the turn for:",player);
-  } else {
-    console.log("try somewhere else");
-  }
+$(".box").on("click",function(){
+
+  if (player == "x"){
+
+  boxSelected = $(this).css({
+    "background-color": "yellow",
+    "font-size":"20px"
+  });
+  console.log("box clicked");
+  console.log(boxSelected);
+  player="o";
+} else if (player=="o"){
+  boxSelected = $(this).css({
+    "background-color": "blue",
+    "font-size":"20px"
+  });
+  player="x";
+}
 })
 
-$("#box2").on("click",function(){
-    console.log("box2 pressed");
-    if(player=="x" && $("#box2 p").html() !="O"){
-    $("#box2 p").html("X");
-    player="o";
-    console.log("now its the turn for:",player);
-  } else if (player=="o" && $("#box2 p").html() !="X"){
-    $("#box2 p").html("O");
-    player="x";
-    console.log("now its the turn for:",player);
-  } else {
-    console.log("try somewhere else");
-  }
-})
 
-$("#box3").on("click",function(){
-    console.log("box3 pressed");
-    if(player=="x" && $("#box3 p").html() !="O"){
-    $("#box3 p").html("X");
-    player="o";
-    console.log("now its the turn for:",player);
-  } else if (player=="o" && $("#box3 p").html() !="X"){
-    $("#box3 p").html("O");
-    player="x";
-    console.log("now its the turn for:",player);
-  } else {
-    console.log("try somewhere else");
-  }
-})
+
+
+
+// $("#box1").on("click",function(){
+//     console.log("box1 pressed");
+//     if(player=="x" && $("#box1 p").html() !="O"){
+//     $("#box1 p").html("X");
+//     player="o";
+//     console.log("now its the turn for:",player);
+//   } else if (player=="o" && $("#box1 p").html() !="X"){
+//     $("#box1 p").html("O");
+//     player="x";
+//     console.log("now its the turn for:",player);
+//   } else {
+//     console.log("try somewhere else");
+//   }
+// })
+//
+// $("#box2").on("click",function(){
+//     console.log("box2 pressed");
+//     if(player=="x" && $("#box2 p").html() !="O"){
+//     $("#box2 p").html("X");
+//     player="o";
+//     console.log("now its the turn for:",player);
+//   } else if (player=="o" && $("#box2 p").html() !="X"){
+//     $("#box2 p").html("O");
+//     player="x";
+//     console.log("now its the turn for:",player);
+//   } else {
+//     console.log("try somewhere else");
+//   }
+// })
+//
+// $("#box3").on("click",function(){
+//     console.log("box3 pressed");
+//     if(player=="x" && $("#box3 p").html() !="O"){
+//     $("#box3 p").html("X");
+//     player="o";
+//     console.log("now its the turn for:",player);
+//   } else if (player=="o" && $("#box3 p").html() !="X"){
+//     $("#box3 p").html("O");
+//     player="x";
+//     console.log("now its the turn for:",player);
+//   } else {
+//     console.log("try somewhere else");
+//   }
+// })
