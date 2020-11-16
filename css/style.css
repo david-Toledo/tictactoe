@@ -1,0 +1,36 @@
+
+h1{
+  font-size: 80px;
+}
+
+body{
+  background-color: #ff9900;
+}
+
+/* .boxes{
+  max-width: 70%;
+  height: 50px; */
+  /* border: 5px solid green; this was to limit the borders*/
+  /* margin: auto;
+} */
+.cat_box{
+  border: 3px dotted yellow;
+  max-width:80%
+  margin:center;
+  height: 300px;
+}
+
+.box{
+  display: inline-block;
+  border: 1px solid red;
+  height:95px;
+  width: 32%;
+
+}
+
+.stats{
+  border: 3px dotted yellow;
+  max-width:80%
+  margin:center;
+  height: 300px;
+}
