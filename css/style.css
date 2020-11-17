@@ -39,13 +39,27 @@ body{
   /* align-items: center; */
 }
 
-.button{
-  background-color:red;
+#buttonX{
+  background-color:yellow;
 
+}
+
+#buttonO{
+  background-color:blue;
 }
 
 .box p{
   font-size: 30px;
   text-align: center;
 
+}
+
+.x{
+  background-color: yellow;
+  border: 3px solid green;
+}
+
+.o{
+  background-color: blue;
+  border: 3px solid pink;
 }

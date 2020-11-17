@@ -1,44 +1,84 @@
 console.log("this will run the game");
 
-const variables = {
 
+
+
+let variables = [
+  "box1",
+  "box2",
+  "box3",
+  "box4",
+  "box5",
+  "box6",
+  "box7",
+  "box8",
+  "box9"
+]
+
+const winner = function(player){
+  if($("#box1").hasClass(player) && $("#box2").hasClass(player) && $("#box3").hasClass(player)){
+  console.log("player has won");
+  alert("player has won")
+  }
 }
+
 
 
 let player;
 let boxSelected;
 
 $("#buttonX").on("click",function(){
-  console.log("X pressed");
+  console.log("x button pressed");
   player="x"
-  console.log("its the turn for",player);
+  console.log("its x turn");
 })
 
 $("#buttonO").on("click",function(){
-  console.log("O pressed");
+  console.log("o button pressed");
   player="o"
-  console.log("its the turn for",player);
+  console.log("its o turn");
 })
 
 
 $(".box").on("click",function(){
-
   if (player == "x"){
+  // boxSelected = $(this).css({
+  //   "background-color": "yellow"
+  // });
+  // console.log("box clicked");
+  // console.log(boxSelected);
+  // const boxId = $(this).attr("id");
+  // console.log(boxId);
+  const boxClass = $(this).addClass("x");
+  // console.log(boxClass);
+  // const boxClassAdded = $(this).hasClass("x");
 
-  boxSelected = $(this).css({
-    "background-color": "yellow",
-    "font-size":"20px"
-  });
-  console.log("box clicked");
-  console.log(boxSelected);
+  // alert($(box1).hasClass("x"));
+  // functon to decide who the winner is will go here//
+  console.log($("#box1").hasClass("x"));
+  console.log($("#box2").hasClass("x"));
+  console.log($("#box3").hasClass("x"));
+  console.log(player);
+
+  winner(player);
+
   player="o";
+  console.log("it's o turn");
+
 } else if (player=="o"){
-  boxSelected = $(this).css({
-    "background-color": "blue",
-    "font-size":"20px"
-  });
+  // boxSelected = $(this).css({
+  //   "background-color": "blue"
+  // });
+  const boxClassAdded = $(this).addClass("o");
+
+  winner(player);
+
   player="x";
+  console.log("it's x turn");
 }
+
+// functon to decide who the winner is will go here//
+
 })
 
 
