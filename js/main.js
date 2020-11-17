@@ -19,6 +19,8 @@ const winner = function(player){
   //all boxes on the top
   if($("#box1").hasClass(player) && $("#box2").hasClass(player) && $("#box3").hasClass(player)){
   displayWinner(player);
+  $("box").removeClass();
+
   }
   //from box 1 to box 9
   if($("#box1").hasClass(player) && $("#box5").hasClass(player) && $("#box9").hasClass(player)){
@@ -68,20 +70,24 @@ $("#buttonO").on("click",function(){
 })
 
 // what to do when the div is clicked - x turn
+//div must not contain "o" or "x" class to work
 $(".box").on("click",function(){
-  if (player == "x"){
-    
+  if (player == "x" && !($(this).hasClass("x")) && !($(this).hasClass("o"))){
+
   const boxClass = $(this).addClass("x");
   winner(player); //call the function to decide if there is a winner//
   player="o";
   console.log("it's o turn");
 
 //what to do when the div is clicked - o turn
-} else if (player=="o"){
+//div must not contain "o" or "x" class to work
+} else if (player=="o" && !($(this).hasClass("x")) && !($(this).hasClass("o")) ){
   const boxClassAdded = $(this).addClass("o");
   winner(player); // call the function to decide if there is a winner//
   player="x";
   console.log("it's x turn");
+} else {
+  console.log("try somewhere else");
 }
 
 
