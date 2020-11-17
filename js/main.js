@@ -1,85 +1,91 @@
 console.log("this will run the game");
 
+//function to reset all boxes//
+const reset = function () {
 
-
-
-let variables = [
-  "box1",
-  "box2",
-  "box3",
-  "box4",
-  "box5",
-  "box6",
-  "box7",
-  "box8",
-  "box9"
-]
-
-const winner = function(player){
-  if($("#box1").hasClass(player) && $("#box2").hasClass(player) && $("#box3").hasClass(player)){
-  console.log("player has won");
-  alert("player has won")
-  }
 }
 
 
+//display winner in the screen function//
+const displayWinner = function(player){
+  $(`<p>player: ${player} has won</p>`).appendTo("h1").css({
+    "color":"blue",
+    "font-size":"20px"
+  }).delay(1000).fadeOut();
+}
 
+//function to determine if boxes make a winner;
+const winner = function(player){
+  //all boxes on the top
+  if($("#box1").hasClass(player) && $("#box2").hasClass(player) && $("#box3").hasClass(player)){
+  displayWinner(player);
+  }
+  //from box 1 to box 9
+  if($("#box1").hasClass(player) && $("#box5").hasClass(player) && $("#box9").hasClass(player)){
+  displayWinner(player);
+  }
+  //end of the if 1 to 9
+
+  //from box 1 to 7//
+  if($("#box1").hasClass(player) && $("#box4").hasClass(player) && $("#box7").hasClass(player)){
+  displayWinner(player);
+  }
+  //end of the if 1 to 7
+
+  //from box 2 to 8
+  if($("#box2").hasClass(player) && $("#box5").hasClass(player) && $("#box8").hasClass(player)){
+  displayWinner(player);
+  }
+  //end of the if 2 to 8
+
+  //from box 3 to 9
+  if($("#box3").hasClass(player) && $("#box6").hasClass(player) && $("#box9").hasClass(player)){
+  displayWinner(player);
+  }
+  //end of the if 2 to 9
+
+  //from box 4 to 6
+  if($("#box4").hasClass(player) && $("#box5").hasClass(player) && $("#box6").hasClass(player)){
+  displayWinner(player);
+  }
+  //end of the if 2 to 9
+
+} //end of the winner function
+
+
+//define variables
 let player;
 let boxSelected;
 
+//start of the game - pressing X
 $("#buttonX").on("click",function(){
-  console.log("x button pressed");
   player="x"
-  console.log("its x turn");
 })
 
+//start of the game - pressing O
 $("#buttonO").on("click",function(){
-  console.log("o button pressed");
   player="o"
-  console.log("its o turn");
 })
 
-
+// what to do when the div is clicked - x turn
 $(".box").on("click",function(){
   if (player == "x"){
-  // boxSelected = $(this).css({
-  //   "background-color": "yellow"
-  // });
-  // console.log("box clicked");
-  // console.log(boxSelected);
-  // const boxId = $(this).attr("id");
-  // console.log(boxId);
+    
   const boxClass = $(this).addClass("x");
-  // console.log(boxClass);
-  // const boxClassAdded = $(this).hasClass("x");
-
-  // alert($(box1).hasClass("x"));
-  // functon to decide who the winner is will go here//
-  console.log($("#box1").hasClass("x"));
-  console.log($("#box2").hasClass("x"));
-  console.log($("#box3").hasClass("x"));
-  console.log(player);
-
-  winner(player);
-
+  winner(player); //call the function to decide if there is a winner//
   player="o";
   console.log("it's o turn");
 
+//what to do when the div is clicked - o turn
 } else if (player=="o"){
-  // boxSelected = $(this).css({
-  //   "background-color": "blue"
-  // });
   const boxClassAdded = $(this).addClass("o");
-
-  winner(player);
-
+  winner(player); // call the function to decide if there is a winner//
   player="x";
   console.log("it's x turn");
 }
 
-// functon to decide who the winner is will go here//
 
-})
+}) //end of the event
 
 
 
