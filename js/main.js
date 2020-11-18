@@ -55,51 +55,66 @@ const counterInScreen = function(){
   $("#o").text(`O:${counterO}`)
   }
 
+//call other functions when there is a win after the comparasion of divs
+const callOtherFunctions = function(){
+  displayWinner(player);
+  addWinToPlayer();
+  counterInScreen();
+  delayReset();
+}
+
 //function to determine if boxes make a winner;
 const winner = function(player){
   //all boxes on the top
   if($("#box1").hasClass(player) && $("#box2").hasClass(player) && $("#box3").hasClass(player)){
-    displayWinner(player);
-    addWinToPlayer();
-    counterInScreen();
-    delayReset();
+    callOtherFunctions();
+  // displayWinner(player);
+  // addWinToPlayer();
+  // counterInScreen();
+  // delayReset();
   //from box 1 to box 9
   } else if($("#box1").hasClass(player) && $("#box5").hasClass(player) && $("#box9").hasClass(player)){
-    displayWinner(player);
-    addWinToPlayer();
-    counterInScreen();
-    delayReset();
+    callOtherFunctions();
+    // displayWinner(player);
+    // addWinToPlayer();
+    // counterInScreen();
+    // delayReset();
   //from box 1 to 7//
   } else if($("#box1").hasClass(player) && $("#box4").hasClass(player) && $("#box7").hasClass(player)){
-    displayWinner(player);
-    addWinToPlayer();
-    counterInScreen();
-    delayReset();
+    callOtherFunctions();
+    // displayWinner(player);
+    // addWinToPlayer();
+    // counterInScreen();
+    // delayReset();
   //from box 2 to 8
   //from box 2 to 8
   } else if($("#box2").hasClass(player) && $("#box5").hasClass(player) &&   $("#box8").hasClass(player)){
-    displayWinner(player);
-    addWinToPlayer();
-    counterInScreen();
-    delayReset();
+    callOtherFunctions();
+    // displayWinner(player);
+    // addWinToPlayer();
+    // counterInScreen();
+    // delayReset();
   //from box 3 to 9
   } else if($("#box3").hasClass(player) && $("#box6").hasClass(player) &&   $("#box9").hasClass(player)){
-    displayWinner(player);
-    addWinToPlayer();
-    counterInScreen();
-    delayReset();
+    callOtherFunctions();
+    // displayWinner(player);
+    // addWinToPlayer();
+    // counterInScreen();
+    // delayReset();
   //from box 3 to 7
   } else if($("#box3").hasClass(player) && $("#box5").hasClass(player) && $("#box7").hasClass(player)){
-    displayWinner(player);
-    addWinToPlayer();
-    counterInScreen();
-    delayReset();
+    callOtherFunctions();
+    // displayWinner(player);
+    // addWinToPlayer();
+    // counterInScreen();
+    // delayReset();
   //from box 4 to 6
   } else  if($("#box4").hasClass(player) && $("#box5").hasClass(player) && $("#box6").hasClass(player)){
-    displayWinner(player);
-    addWinToPlayer();
-    counterInScreen();
-    delayReset();
+    callOtherFunctions();
+    // displayWinner(player);
+    // addWinToPlayer();
+    // counterInScreen();
+    // delayReset();
     //end of the if 2 to 9
   } else if (counter == 9){
     displayDrawGame();
@@ -133,7 +148,7 @@ $(".box").on("click",function(){
 //what to do when the div is clicked - o turn
 //div must not contain "o" or "x" class to work
 } else if (player=="o" && !($(this).hasClass("x")) && !($(this).hasClass("o")) ){
-  const boxClassAdded = $(this).addClass("o");
+  $(this).addClass("o");
   counter++;
   winner(player); // call the function to decide if there is a winner//
   player="x";
