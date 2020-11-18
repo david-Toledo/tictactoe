@@ -63,3 +63,8 @@ body{
   background-color: blue;
   border: 3px solid pink;
 }
+
+li{
+  font-size: 15px;
+  list-style-type: none;
+}
