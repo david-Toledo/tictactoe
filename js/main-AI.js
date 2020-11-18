@@ -1,14 +1,14 @@
-console.log("this will run the game");
+console.log("this will run the game with AI");
 
 //define variables
 let player;
 let counter = 0;//this will make sure once its 9 its a tie
 let counterX = 0; // this will keep track of the X wins
-let counterO = 0; // this will keep track of the O wins
+let counterCPU = 0; // this will keep track of the O wins
 
 //function to reset all boxes//
 const reset = function () {
-    $(".box").removeClass("x").removeClass("o");
+    $(".box").removeClass("x").removeClass("cpu");
     player=undefined;
     counter = 0;
 }
@@ -38,16 +38,16 @@ const displayDrawGame = function(){
 const addWinToPlayer = function () {
   if (player=="x"){
     counterX ++;
-  } else if (player =="o") {
-    counterO ++;
+  } else if (player =="cpu") {
+    counterCPU ++;
   }
   console.log("x has won",counterX);
-  console.log("o has won",counterO);
+  console.log("CPU has won",counterCPU);
 }
 
 const counterInScreen = function(){
-  $("#x").text(`X:${counterX}`)
-  $("#o").text(`O:${counterO}`)
+  $("#x").text(`Player:${counterX}`)
+  $("#o").text(`CPU:${counterCPU}`)
   }
 
 //call other functions when there is a win after the comparasion of divs
@@ -74,42 +74,74 @@ const winner = function(player){
     displayDrawGame();
     delayReset();
   }
+  console.log("player:",player);
 } //end of the winner function
 
-//start of the game - pressing "X"
+//create a function for the cpu to play
+  const cpuTurn = function () {
+      if (!($("#box5").hasClass("x"))){
+        $("#box5").addClass("cpu")
+      } else if (!($("#box1").hasClass("x"))){
+        $("#box1").addClass("cpu")
+      } else if (!($("#box3").hasClass("x"))){
+        $("#box3").addClass("cpu")
+      } else if (!($("#box7").hasClass("x"))){
+        $("#box7").addClass("cpu")
+      } else if (!($("#box9").hasClass("x"))){
+        $("#box9").addClass("cpu")
+      } else if (!($("#box2").hasClass("x"))){
+        $("#box2").addClass("cpu")
+      } else if (!($("#box4").hasClass("x"))){
+        $("#box4").addClass("cpu")
+      } else if (!($("#box6").hasClass("x"))){
+        $("#box6").addClass("cpu")
+      } else if (!($("#box8").hasClass("x"))){
+        $("#box8").addClass("cpu")
+      } //end of the else
+  } //end of the cpu function.
+
+
+
+
+//start of the game - pressing "X" player will be X
 $("#buttonX").on("click",function(){
   player="x"
 })
 
-//start of the game - or pressing "O"
+//start of the game - or pressing "O" player will be X too
 $("#buttonO").on("click",function(){
-  player="o"
+  player="x"
 })
 
 // what to do when the div is clicked - x turn
 //div must not contain "o" or "x" class to work
 $(".box").on("click",function(){
-  if( $(this).hasClass("x") ||  $(this).hasClass("o") ){
+  if( $(this).hasClass("x") ||  $(this).hasClass("cpu") ){
     return;
   }
   if (player == "x"){
     $(this).addClass("x");
     counter++;
     winner(player); //call the function to decide if there is a winner//
-    player="o";
-    console.log("it's o turn");
+    player="cpu";
+    console.log("it's cpu turn");
+    cpuTurn();
+    winner(player);
+    player="x";
+    console.log("player's turn");
+
     //what to do when the div is clicked - o turn
     //div must not contain "o" or "x" class to work
-  } else if(player=="o"){
-    $(this).addClass("o");
-    counter++;
-    winner(player); // call the function to decide if there is a winner//
-    player="x";
-    //if counter is = 9 and noone has won it will reset the game //
-    // if (counter == 9){
-    // displayDrawGame();
-    // delayReset();
-    console.log("it's x turn");
+  // } else if(player=="o"){
+  //   $(this).addClass("o");
+  //   counter++;
+  //   winner(player); // call the function to decide if there is a winner//
+  //   player="x";
+  //   //if counter is = 9 and noone has won it will reset the game //
+  //   // if (counter == 9){
+  //   // displayDrawGame();
+  //   // delayReset();
+  //   console.log("it's x turn");
   }else {
   displayChoosePlayer();
   console.log("try somewhere else");

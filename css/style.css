@@ -69,6 +69,12 @@ body{
   border: 3px solid pink;
 }
 
+.cpu{
+  background-color: red;
+  border: 3px solid hotpink;
+
+}
+
 li{
   font-size: 15px;
   list-style-type: none;
