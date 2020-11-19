@@ -1,6 +1,6 @@
 Tic-tac-toe
 =========================================================
-This is the fist project in General Assembly.
+This is my fist project in General Assembly.
 Tic-tac-toe or also called "X's and O's" or "Gato" in my Country which means "cat", is a very well known game around the world. No matter if you are old or young. Everyone has seen it or played it at least once. This was basically a paper and pencil game for 2 players but now with the technology is also digital), X and O, who take turns marking spaces in a 3x3 grid.
 
 
@@ -25,4 +25,8 @@ There is a counter below to show how many times the player X or player O has won
 
 Known Bugs
 ===============================================================
-If you try to click in a box for several times the user receives as many times the message of "choose Player" in the screen. 
+If the user tries to click in a box for several times without choosing a player the user receives as many times the message of "choose a Player!" in the screen.
+
+Future Feature list
+================================================================
+Player will be able to play against the CPU
