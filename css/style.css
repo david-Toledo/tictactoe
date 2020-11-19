@@ -48,12 +48,6 @@ body{
   background-color:blue;
 }
 
-.box p{
-  font-size: 30px;
-  text-align: center;
-
-}
-
 .x{
   background-color: yellow;
   border: 3px solid green;
