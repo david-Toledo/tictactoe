@@ -46,8 +46,8 @@ const addWinToPlayer = function () {
 }
 
 const counterInScreen = function(){
-  $("#x").text(`X:${counterX}`)
-  $("#o").text(`O:${counterO}`)
+  $("#x").text(`Player X:${counterX}`)
+  $("#o").text(`Player O:${counterO}`)
   }
 
 //call other functions when there is a win after the comparasion of divs
