@@ -3,8 +3,8 @@ console.log("this will run the game");
 //define variables
 let player;
 let counter = 0;//this will make sure once its 9 its a tie
-let counterX = 0; // this will keep track of the X wins
-let counterO = 0; // this will keep track of the O wins
+let counterX = 0; // this will keep track of the "X" wins
+let counterO = 0; // this will keep track of the "O" wins
 
 //function to reset all boxes//
 const reset = function () {
@@ -12,7 +12,7 @@ const reset = function () {
     player=undefined;
     counter = 0;
 }
-
+//function to display: "choose player" when user hasnt selected "x" or "o"//
 const displayChoosePlayer = function () {
   $("<p> Choose a player!</p>").appendTo("h1").css({
     "color":"blue",
@@ -20,7 +20,7 @@ const displayChoosePlayer = function () {
   }).delay(800).fadeOut();
 }
 
-// display winner in the screen function//
+// function to display the winner in the screen //
 const displayWinner = function(player){
   $(`<p>player: "${player}" has won</p><p> Play again!</p>`).appendTo("h1").css({
     "color":"blue",
@@ -28,6 +28,7 @@ const displayWinner = function(player){
   }).delay(1000).fadeOut();
 }
 
+//function when there is a draw game //
 const displayDrawGame = function(){
   $("<p>Its a tie</p> <p>Play again!</p>").appendTo("h1").css({
     "color":"blue",
@@ -35,22 +36,22 @@ const displayDrawGame = function(){
   }).delay(1000).fadeOut();
 }
 
+//function to keep track of the wins of each player//
 const addWinToPlayer = function () {
   if (player=="x"){
     counterX ++;
   } else if (player =="o") {
     counterO ++;
   }
-  console.log("x has won",counterX);
-  console.log("o has won",counterO);
 }
 
+//function to show the counter in the screen//
 const counterInScreen = function(){
   $("#x").text(`Player X:${counterX}`)
   $("#o").text(`Player O:${counterO}`)
   }
 
-//call other functions when there is a win after the comparasion of divs
+//call other functions when there is a win after the divs comparation //
 const winnerOutcome = function(){
   displayWinner(player);
   addWinToPlayer();
@@ -58,36 +59,34 @@ const winnerOutcome = function(){
   setTimeout(reset,600);
 }
 
-//function to determine if boxes make a winner;
+//function to determine if boxes match a winner//
 const winner = function(player){
-  //all boxes on the top
   if(($("#box1").hasClass(player) && $("#box2").hasClass(player) && $("#box3").hasClass(player))
   ||($("#box1").hasClass(player) && $("#box5").hasClass(player) && $("#box9").hasClass(player))
   ||($("#box1").hasClass(player) && $("#box4").hasClass(player) && $("#box7").hasClass(player))
-  ||($("#box2").hasClass(player) && $("#box5").hasClass(player) &&   $("#box8").hasClass(player))
-  ||($("#box3").hasClass(player) && $("#box6").hasClass(player) &&   $("#box9").hasClass(player))
+  ||($("#box2").hasClass(player) && $("#box5").hasClass(player) && $("#box8").hasClass(player))
+  ||($("#box3").hasClass(player) && $("#box6").hasClass(player) && $("#box9").hasClass(player))
   ||($("#box3").hasClass(player) && $("#box5").hasClass(player) && $("#box7").hasClass(player))
   ||($("#box4").hasClass(player) && $("#box5").hasClass(player) && $("#box6").hasClass(player))
   ||($("#box7").hasClass(player) && $("#box8").hasClass(player) && $("#box9").hasClass(player))){
     winnerOutcome();
   } else if (counter == 9){
     displayDrawGame();
-    delayReset();
+    setTimeout(reset,600);
   }
 } //end of the winner function
 
-//start of the game - pressing "X"
+//start the game - pressing "X"
 $("#buttonX").on("click",function(){
   player="x"
 })
 
-//start of the game - or pressing "O"
+//start the game - pressing "O"
 $("#buttonO").on("click",function(){
   player="o"
 })
 
-// what to do when the div is clicked - x turn
-//div must not contain "o" or "x" class to work
+// what to do when any div is clicked - x turn
 $(".box").on("click",function(){
   if( $(this).hasClass("x") ||  $(this).hasClass("o") ){
     return;
@@ -95,27 +94,14 @@ $(".box").on("click",function(){
   if (player == "x"){
     $(this).addClass("x");
     counter++;
-    winner(player); //call the function to decide if there is a winner//
+    winner(player);
     player="o";
-    console.log("it's o turn");
-    //what to do when the div is clicked - o turn
-    //div must not contain "o" or "x" class to work
   } else if(player=="o"){
     $(this).addClass("o");
     counter++;
-    winner(player); // call the function to decide if there is a winner//
+    winner(player);
     player="x";
-    //if counter is = 9 and noone has won it will reset the game //
-    // if (counter == 9){
-    // displayDrawGame();
-    // delayReset();
-    console.log("it's x turn");
-  }else {
-  displayChoosePlayer();
-  console.log("try somewhere else");
-} //end of the else
+    }else {
+    displayChoosePlayer();
+    } //end of the else
 }) //end of the event
-
-// if ($(".box").hasClass("x") || $(".box").hasClass("o")){
-//   console.log("its a tie");
-// }
