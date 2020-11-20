@@ -74,11 +74,7 @@ const winner = function(player){
     winnerOutcome();
     } else if (counter == 9){
     displayDrawGame();
-    delayReset();
-    // } else {
-    // cpuTurn();
-    // winnerOutcome();
-    // winner(player);
+    setTimeout(reset,600);
   }
 
 
@@ -139,14 +135,10 @@ $(".box").on("click",function(){
     winner(player); //call the function to decide if there is a winner//
     if (counter>0){
       player="cpu";
-      console.log("counter is:",counter);
-      console.log("player is:", player);
-      console.log("it's cpu turn");
       cpuTurn();
       winner(player);
       player="x"
-      console.log("player's turn",player);
-    }
+      }
     //what to do when the div is clicked - o turn
     //div must not contain "o" or "x" class to work
   } else if(player=="o"){
@@ -154,14 +146,13 @@ $(".box").on("click",function(){
     winner(player); // call the function to decide if there is a winner//
     counter++;
     player="cpu";
-    console.log("it's cpu turn");
     cpuTurn();
     winner(player);
     player="o"
-    console.log("player's turn",player);
+
 
   }else {
     displayChoosePlayer();
-    console.log("try somewhere else");
+
 } //end of the else
 }) //end of the event
