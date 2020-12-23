@@ -6,7 +6,7 @@ Tic-tac-toe or also called "X's and O's" or "Gato" in my Country which means "ca
 
 Link
 ============================================================
-https://davidtoledo87.github.io/tictactoe/
+https://david-toledo.github.io/tictactoe/
 
 
 Technologies Used
