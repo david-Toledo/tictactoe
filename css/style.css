@@ -19,6 +19,8 @@ body{
   border: 1px solid #eb500c;
   height:70px;
   width:70px;
+  box-shadow: 0 5px 5px #df7d5e;
+  
 }
 
 .counter{
