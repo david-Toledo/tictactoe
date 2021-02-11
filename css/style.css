@@ -20,7 +20,8 @@ body{
   height:70px;
   width:70px;
   box-shadow: 0 5px 5px #df7d5e;
-  
+  border-radius: 20px;
+
 }
 
 .counter{
