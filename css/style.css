@@ -37,18 +37,20 @@ body{
 
 .chooseBox{
   display: inline-block;
-  border: 1px solid #eb500c;
+  /* border: 1px solid #eb500c; */
   height:40%;
   width: 100px;
 }
 
 #buttonX{
   background-color:yellow;
+  margin-left: 25px;
 
 }
 
 #buttonO{
   background-color:blue;
+  margin-left: 25px;
 }
 
 .x{
